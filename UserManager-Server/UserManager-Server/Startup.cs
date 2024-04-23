@@ -1,5 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using UserManager.DataAccess;
+using UserManager.Services;
 
 namespace UserManager;
 
@@ -21,6 +27,8 @@ public class Startup
         services.AddControllers();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
+
+        services.AddScoped<IUserService, UserService>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -31,15 +39,10 @@ public class Startup
             app.UseSwaggerUI();
             app.UseDeveloperExceptionPage();
         }
-        else
-        {
-            app.UseExceptionHandler("/Error");
-            app.UseHsts();
-        }
+
         app.RunMigrations();
 
         app.UseRouting();
-        app.UseAuthorization();
 
         app.UseEndpoints(endpoints =>
         {

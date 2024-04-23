@@ -11,7 +11,7 @@ public class Repository<T> : IRepository<T> where T : class
     public Repository(UserManagerContext dbContext)
     {
         _dbContext = dbContext;
-        _dbSet = dbContext.Set<T>();
+        _dbSet = _dbContext.Set<T>();
     }
 
     public T Add(T entity)
@@ -33,4 +33,6 @@ public class Repository<T> : IRepository<T> where T : class
     }
 
     public void SaveChanges() => _dbContext.SaveChanges();
+
+    public T? GetById(int id) => _dbSet.Find(id);
 }

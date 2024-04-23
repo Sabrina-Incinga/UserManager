@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>UserManager</RootNamespace>
   </PropertyGroup>
 
@@ -23,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\UserManager-Server.DataAccess\UserManager-Server.DataAccess.csproj" />
+    <ProjectReference Include="..\UserManager-Server.Services\UserManager-Server.Services.csproj" />
   </ItemGroup>
 
 </Project>

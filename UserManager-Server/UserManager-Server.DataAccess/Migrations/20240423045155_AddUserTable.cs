@@ -22,7 +22,7 @@ namespace UserManager.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    BirthDate = table.Column<DateTime>(type: "smalldatetime", nullable: false),
+                    BirthDate = table.Column<DateTime>(type: "date", nullable: false),
                     Active = table.Column<bool>(type: "bit", nullable: false),
                     Version = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },

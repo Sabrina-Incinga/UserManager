@@ -7,6 +7,6 @@ public class User
     public string Name { get; set; }
     public DateTime BirthDate { get; set; }
     public bool Active { get; set; }
-    public byte[] Version { get; set; }
+    public byte[]? Version { get; set; }
 }
 

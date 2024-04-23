@@ -11,8 +11,9 @@ internal class UserTypeConfiguration : IEntityTypeConfiguration<User>
         builder.Property(e => e.Name)
             .HasColumnType("nvarchar(50)");
         builder.Property(e => e.BirthDate)
-            .HasColumnType("smalldatetime");
+            .HasColumnType("date");
         builder.Property(e => e.Version)
+        .IsRequired()
         .IsRowVersion()
         .IsConcurrencyToken();
     }

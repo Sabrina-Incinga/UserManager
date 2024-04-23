@@ -8,4 +8,5 @@ public interface IRepository<T> where T : class
     T Update(T entity);
     void Delete(T entity);
     void SaveChanges();
+    T? GetById(int id);
 }

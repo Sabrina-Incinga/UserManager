@@ -12,7 +12,7 @@ using UserManager.DataAccess;
 namespace UserManager.DataAccess.Migrations
 {
     [DbContext(typeof(UserManagerContext))]
-    [Migration("20240422225259_AddUserTable")]
+    [Migration("20240423024023_AddUserTable")]
     partial class AddUserTable
     {
         /// <inheritdoc />
@@ -37,11 +37,11 @@ namespace UserManager.DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("BirthDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("smalldatetime");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<byte[]>("Version")
                         .IsConcurrencyToken()

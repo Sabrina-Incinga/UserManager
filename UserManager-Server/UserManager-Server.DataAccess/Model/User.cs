@@ -1,4 +1,6 @@
-﻿namespace UserManager.Model;
+﻿using System;
+
+namespace UserManager.Model;
 public class User
 {
     public int Id { get; set; }

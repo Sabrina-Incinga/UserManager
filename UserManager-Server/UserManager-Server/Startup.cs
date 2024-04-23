@@ -17,6 +17,7 @@ public class Startup
         services.AddDbContext<UserManagerContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("constring")));
 
+        services.AddDataAccessServices();
         services.AddControllers();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();

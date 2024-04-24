@@ -15,7 +15,8 @@ public static class MigrationConfig
         var services = scope.ServiceProvider;
         var context = services.GetRequiredService<UserManagerContext>();
 
-        context.Database.Migrate();
+        if (!context.Database.IsInMemory())
+            context.Database.Migrate();
     }
 }
 public static class ServiceConfigurator

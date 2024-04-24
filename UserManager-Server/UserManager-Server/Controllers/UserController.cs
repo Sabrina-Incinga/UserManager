@@ -1,13 +1,8 @@
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using UserManager.Model;
 using UserManager.Services;
+using UserManager.Services.Model;
 
 namespace UserManager.Controllers;
 
@@ -30,59 +25,29 @@ public class UserController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<User> CreteUser([FromBody] User entity)
+    public ActionResult<User> CreateUser([FromBody] UserCreateRequest entity)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
-        try
-        {
-            var newUser = _userService.AddUser(entity);
-            return CreatedAtAction(nameof(GetUserById), new { id = newUser.Id }, newUser);
-        }
-        catch (Exception e)
-        {
-            return Problem(
-                title: "Exception",
-                detail: e.Message,
-                statusCode: StatusCodes.Status400BadRequest);
-        }
+        var newUser = _userService.AddUser(entity);
+        return CreatedAtAction(nameof(GetUserById), new { id = newUser.Id }, newUser);
     }
 
-    [HttpPut]
-    public ActionResult<User> UpdateUser([FromBody] User entity)
+    [HttpPut("{key:int}")]
+    public ActionResult<User> UpdateUser([FromRoute] int key, [FromBody] UserUpdateRequest entity)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
-        try
-        {
-            return Ok(_userService.UpdateUser(entity));
-        }
-        catch (Exception e)
-        {
-            return Problem(
-                title: "Exception",
-                detail: e.Message,
-                statusCode: StatusCodes.Status400BadRequest);
-        }
+        return Ok(_userService.UpdateUser(key, entity));
     }
 
     [HttpDelete("{key:int}")]
     public IActionResult DeleteUser([FromRoute] int key)
     {
-        try
-        {
-            _userService.DeleteUser(key);
-            return NoContent();
-        }
-        catch (Exception e)
-        {
-            return Problem(
-                title: "Exception",
-                detail: e.Message,
-                statusCode: StatusCodes.Status400BadRequest);
-        }
+        _userService.DeleteUser(key);
+        return NoContent();
     }
 
     [HttpGet("{id}")]

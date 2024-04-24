@@ -21,10 +21,6 @@
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -68,7 +64,7 @@ UserManager is a RESTful API built to manage user information. It exposes a comp
 
 ### Built With
 
-- [![.Net7][Net7.com]][Net7-url]
+- .NET Core 7.0
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -133,7 +129,7 @@ See the [open issues](https://github.com/Sabrina-incinga/UserManager/issues) for
 
 ## Contact
 
-Your Name - sabrinagincinga@gmail.com
+Sabrina Giuliana Incinga - sabrinagincinga@gmail.com
 
 Project Link: [https://github.com/Sabrina-incinga/UserManager](https://github.com/Sabrina-incinga/UserManager)
 
